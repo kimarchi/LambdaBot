@@ -91,14 +91,12 @@ const HttpGetAsync = async(url) => {
     console.log(`HttpRequestAsync url=${url}, body=${body}`);
       return new Promise((resolve, reject) => {
       const postData = JSON.stringify(body);
-      const contentLength = Buffer.byteLength(postData);
       url += `/?botId=${process.env.BOT_ID}`; // #refactoring     
       console.log('url=',url);
       // make a option
-     const options = {method: 'POST',
+     const options = {method: 'GET',
                       headers: {
                         'Content-Type': 'application/json',
-                        'Content-Length': contentLength,
                         'x-auth-user': 'LambdaBot', // #refactoring
                         'x-auth-token': process.env.BOT_ACCESS_TOKEN, // #refactoring
                       },
